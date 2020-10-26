@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MyBooks" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="alertDialogTheme">@style/Theme.MyBooks.AlertDialog</item>
+
+    </style>
+
+    <style name="Theme.MyBooks.Splash" parent="Theme.MyBooks">
+        <item name="colorPrimaryDark">@color/ic_launcher_background</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <style name="Theme.MyBooks.Splash.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
+
+    <style name="Theme.MyBooks.Splash.PopupOverlay" parent="ThemeOverlay.AppCompat.DayNight" />
+
+    <style name="Theme.MyBooks.AlertDialog" parent="Theme.MaterialComponents.DayNight.Dialog.MinWidth">
+        <item name="buttonBarNegativeButtonStyle">@style/Theme.MyBooks.AlertDialog.PositiveButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Theme.MyBooks.AlertDialog.PositiveButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Theme.MyBooks.AlertDialog.PositiveButtonStyle</item>
+    </style>
+
+    <style name="Theme.MyBooks.AlertDialog.PositiveButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/colorRed</item>
+    </style>
+</resources>

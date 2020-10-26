@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryVariant">@android:color/white</color>
+    <color name="colorOnPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/white</color>
+
+    <color name="colorPoint">@android:color/background_dark</color>
+    <color name="colorHintText">@android:color/darker_gray</color>
+    <color name="colorThumbnailBg">#dddddd</color>
+    <color name="colorRed">@android:color/holo_red_light</color>
+</resources>

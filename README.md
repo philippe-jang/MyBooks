@@ -12,7 +12,6 @@ Screenshots
 ===========
 ![Book list](screenshots/book_list.png "A book search results")
 ![Book details](screenshots/book_detail.png "Details for a specific book")
-
 ![Book list](screenshots/book_list_dark.png "A book search results(Drak Theme)")
 ![Book details](screenshots/book_detail_dark.png "Details for a specific book(Drak Theme)")
 

@@ -2,12 +2,8 @@ package com.mybooks.app.ui.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.mybooks.app.data.Document
 import com.mybooks.app.ui.base.BaseViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * 도서 상세정보 뷰모델
@@ -29,12 +25,8 @@ class DetailViewModel : BaseViewModel() {
      * @param document 도서 정보
      */
     fun setDocument(document: Document) {
-        viewModelScope.launch {
-            withContext(Dispatchers.Main) {
-                _document.value = document
-                _isFavorite.value = document.isFavorite
-            }
-        }
+        _document.value = document
+        _isFavorite.value = document.isFavorite
     }
 
     /**

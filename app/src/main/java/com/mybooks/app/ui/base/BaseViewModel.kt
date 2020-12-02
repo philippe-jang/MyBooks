@@ -3,10 +3,6 @@ package com.mybooks.app.ui.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * 공통 뷰모델
@@ -45,11 +41,7 @@ open class BaseViewModel : ViewModel() {
      * @param msg 오류 메시지
      */
     fun showNetworkError(msg: String) {
-        viewModelScope.launch {
-            withContext(Dispatchers.Main) {
-                _showNetworkError.value = msg
-            }
-        }
+        _showNetworkError.value = msg
     }
 
 }

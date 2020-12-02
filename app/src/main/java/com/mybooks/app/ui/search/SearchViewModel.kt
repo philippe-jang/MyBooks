@@ -6,7 +6,10 @@ import com.mybooks.app.adapter.callback.OnSearchActionListener
 import com.mybooks.app.data.BookRepository
 import com.mybooks.app.data.Document
 import com.mybooks.app.ui.base.BaseViewModel
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
 /**
  * 도서 검색 뷰모델
@@ -39,7 +42,7 @@ class SearchViewModel(private val bookRepository: BookRepository) : BaseViewMode
      * 도서 목록의 뷰타입 설정
      * @param viewType 리스트뷰 뷰타입 (TEXT, IMAGE)
      */
-    fun setBookListViewType(viewType: Int) = _bookListViewType.postValue(viewType)
+    private fun setBookListViewType(viewType: Int) = _bookListViewType.postValue(viewType)
 
     /**
      * 도서 목록의 뷰타입 변경
@@ -52,10 +55,6 @@ class SearchViewModel(private val bookRepository: BookRepository) : BaseViewMode
             } else {
                 setBookListViewType(BookListAdapter.TEXT_VIEW_TYPE)
             }
-        }
-
-        searchKeyword.value?.let {
-            searchBookList(it)
         }
     }
 
@@ -98,10 +97,8 @@ class SearchViewModel(private val bookRepository: BookRepository) : BaseViewMode
      * 해당 검색어 변경을 요청
      * @param keyword 검색할 도서 제목
      */
-    private suspend fun fetchSearchKeyword(keyword: String) {
-        withContext(Dispatchers.Main) {
-            searchKeyword.value = keyword
-        }
+    private fun fetchSearchKeyword(keyword: String) {
+        searchKeyword.value = keyword
     }
 
     /**

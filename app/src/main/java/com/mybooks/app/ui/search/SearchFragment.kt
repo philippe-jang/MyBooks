@@ -88,11 +88,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
      * @param viewType 리스트뷰 뷰타입 (TEXT, IMAGE)
      * @param bookListAdapter 도서 리스트 어댑터
      */
-    private fun initBookListView(
-        bookListView: RecyclerView,
-        viewType: Int,
-        bookListAdapter: BookListAdapter
-    ) {
+    private fun initBookListView(bookListView: RecyclerView, viewType: Int, bookListAdapter: BookListAdapter) {
         when (viewType) {
             BookListAdapter.TEXT_VIEW_TYPE -> {
                 bookListView.layoutManager = LinearLayoutManager(bookListView.context)
@@ -145,6 +141,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             for (i in 0 until this.size) {
                 val curDocument = this[i]
                 if (curDocument.isbn == document.isbn) {
+                    curDocument.isFavorite = document.isFavorite
                     bookListAdapter.notifyItemChanged(i)
                     break
                 }

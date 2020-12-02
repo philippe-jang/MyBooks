@@ -17,7 +17,7 @@ class SearchViewModel(private val bookRepository: BookRepository) : BaseViewMode
 
     private var searchBookJob = Job()
 
-    private val _bookListViewType = MutableLiveData<Int>()
+    private val _bookListViewType = MutableLiveData(BookListAdapter.TEXT_VIEW_TYPE)
     val bookListViewType: LiveData<Int> = _bookListViewType
 
     private val searchKeyword = MutableLiveData<String>()

@@ -55,12 +55,12 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
     override fun initView(viewDataBinding: FragmentSearchBinding) {
         viewDataBinding.viewModel = searchViewModel
-        initBookListAdapter(viewDataBinding.rvBookList, DEFAULT_VIEW_TYPE)
+        initBookListView(viewDataBinding.rvBookList, DEFAULT_VIEW_TYPE, bookListAdapter)
         initBookListScrollListener(viewDataBinding.rvBookList)
 
         searchViewModel.bookListViewType.observe(this@SearchFragment, {
             currentListViewType = it
-            initBookListAdapter(viewDataBinding.rvBookList, it)
+            setListViewType(viewDataBinding.rvBookList, it)
         })
 
         searchViewModel.mainBookList.observe(this, {
@@ -79,17 +79,20 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             updateDocument(it)
         })
 
-        searchViewModel.setBookListViewType(DEFAULT_VIEW_TYPE)
         searchViewModel.searchBookList(getString(R.string.default_search_keyword))
-
     }
 
     /**
-     * 도서 목록 어댑터 초기화
+     * 도서 목록 리스트 초기화
      * @param bookListView 도서 리스트뷰
      * @param viewType 리스트뷰 뷰타입 (TEXT, IMAGE)
+     * @param bookListAdapter 도서 리스트 어댑터
      */
-    private fun initBookListAdapter(bookListView: RecyclerView, viewType: Int) {
+    private fun initBookListView(
+        bookListView: RecyclerView,
+        viewType: Int,
+        bookListAdapter: BookListAdapter
+    ) {
         when (viewType) {
             BookListAdapter.TEXT_VIEW_TYPE -> {
                 bookListView.layoutManager = LinearLayoutManager(bookListView.context)
@@ -98,7 +101,7 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                 bookListView.layoutManager = GridLayoutManager(bookListView.context, 2)
             }
         }
-        bookListAdapter = BookListAdapter(viewType, bookClickListener)
+
         bookListView.adapter = bookListAdapter
     }
 
@@ -171,6 +174,28 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
         activity?.let {
             if (it is MainActivity) {
                 it.hideKeyboard(focusView)
+            }
+        }
+    }
+
+    /**
+     * 도서 리스트 뷰타입 변경
+     * @param bookListView 도서 리스트뷰
+     * @param viewType 리스트뷰 뷰타입 (TEXT, IMAGE)
+     */
+    private fun setListViewType(bookListView: RecyclerView, viewType: Int) {
+        when (viewType) {
+            BookListAdapter.TEXT_VIEW_TYPE -> {
+                bookListView.layoutManager = LinearLayoutManager(bookListView.context)
+            }
+            BookListAdapter.IMAGE_VIEW_TYPE -> {
+                bookListView.layoutManager = GridLayoutManager(bookListView.context, 2)
+            }
+        }
+
+        bookListView.adapter?.let {
+            if (it is BookListAdapter) {
+                it.itemViewType = viewType
             }
         }
     }

@@ -13,7 +13,7 @@ import com.mybooks.app.data.Document
  * 도서 리스트 어댑터
  * @author philippe
  */
-class BookListAdapter(private val itemViewType: Int, private val bookClickListener: OnBookClickListener) :
+class BookListAdapter(var itemViewType: Int, private val bookClickListener: OnBookClickListener) :
     ListAdapter<Document, RecyclerView.ViewHolder>(BookListDiffCallback()) {
 
     companion object {

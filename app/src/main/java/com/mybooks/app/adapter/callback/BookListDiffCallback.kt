@@ -9,7 +9,7 @@ import com.mybooks.app.data.Document
  */
 class BookListDiffCallback : DiffUtil.ItemCallback<Document>() {
     override fun areItemsTheSame(oldItem: Document, newItem: Document): Boolean {
-        return (oldItem.title == newItem.title && oldItem.thumbnail == newItem.thumbnail)
+        return oldItem.isbn == newItem.isbn
     }
 
     override fun areContentsTheSame(oldItem: Document, newItem: Document): Boolean {

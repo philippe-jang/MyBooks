@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">@android:color/black</color>
-    <color name="colorPrimaryVariant">@android:color/black</color>
-    <color name="colorOnPrimary">@android:color/black</color>
     <color name="colorPrimaryDark">@android:color/black</color>
+    <color name="colorAccent">@android:color/white</color>
 
     <color name="colorPoint">@android:color/background_light</color>
     <color name="colorHintText">#dddddd</color>
